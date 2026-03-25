@@ -1,614 +1,973 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Minha Área — Curso Montador de Móveis</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fontes usadas na página de vendas -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome para os ícones -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Respira – Pare de Fumar Sem Esforço</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --surface: #111111;
+  --surface2: #181818;
+  --gold: #c8a84b;
+  --gold-light: #e5c870;
+  --gold-dim: rgba(200,168,75,0.12);
+  --text: #ede9e3;
+  --muted: #777;
+  --green: #52b788;
+  --danger: #e05c5c;
+  --border: rgba(200,168,75,0.16);
+  --border-strong: rgba(200,168,75,0.5);
+}
 
-    <style>
-        :root {
-            --bg-dark:       #0b1120;
-            --bg-card:       #1e293b;
-            --bg-card-hover: #334155;
-            --border-color:  #334155;
-            --orange:        #f97316;
-            --orange-dark:   #ea580c;
-            --orange-soft:   rgba(249, 115, 22, 0.1);
-            --green:         #10b981;
-            --green-dark:    #059669;
-            --green-soft:    rgba(16, 185, 129, 0.1);
-            --text-main:     #f8fafc;
-            --text-muted:    #94a3b8;
-            --text-light:    #cbd5e1;
-            
-            --font-title:    'Poppins', sans-serif;
-            --font-body:     'Inter', sans-serif;
-            
-            --radius-sm:     8px;
-            --radius-md:     12px;
-            --radius-lg:     16px;
-        }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  overflow-x:hidden;
+}
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
+/* ══════════════════════════════
+   GLOBAL
+══════════════════════════════ */
+.hidden{display:none!important}
+.container{max-width:640px;margin:0 auto;padding:0 24px}
+.container-wide{max-width:900px;margin:0 auto;padding:0 24px}
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+.gold{color:var(--gold)}
+.serif{font-family:'Cormorant Garamond',serif}
 
-        h1, h2, h3, h4 { font-family: var(--font-title); line-height: 1.2; }
-        a { text-decoration: none; color: inherit; }
+/* ══════════════════════════════
+   GRAIN OVERLAY
+══════════════════════════════ */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+  opacity:.5;
+}
 
-        .container {
-            width: 100%;
-            max-width: 1060px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+/* ══════════════════════════════
+   BUTTON
+══════════════════════════════ */
+.btn{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#080808;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:18px 40px;
+  border-radius:4px;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 0 40px rgba(200,168,75,.28);
+  position:relative;
+  overflow:hidden;
+}
+.btn::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.12) 100%);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 60px rgba(200,168,75,.42)}
+.btn-full{display:block;width:100%;text-align:center}
 
-        /* ── HEADER ── */
-        header {
-            background: rgba(11, 17, 32, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 16px 0;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: var(--font-title);
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-        .logo span { color: var(--orange); }
-        
-        .header-right { display: flex; align-items: center; gap: 14px; }
-        .avatar {
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--orange), var(--orange-dark));
-            color: var(--text-main);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-title); font-size: 1.1rem; font-weight: 700;
-            border: 2px solid var(--bg-card);
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
-        }
-        .header-name { font-size: 0.9rem; font-weight: 600; color: var(--text-light); }
+/* ══════════════════════════════
+   ANIMATIONS
+══════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,168,75,.4)}50%{box-shadow:0 0 0 12px rgba(200,168,75,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drawLine{from{width:0}to{width:100%}}
 
-        /* ── MAIN ── */
-        main { padding: 48px 0 100px; }
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
 
-        .welcome-header { margin-bottom: 40px; text-align: left; }
-        .welcome-header h1 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            letter-spacing: -1px;
-        }
-        .welcome-header h1 span {
-            background: linear-gradient(to right, var(--orange), #facc15);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .welcome-header p { font-size: 1.1rem; color: var(--text-muted); font-weight: 400; }
+/* ══════════════════════════════
+   ████ QUIZ SECTION ████
+══════════════════════════════ */
+#quiz-section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:48px 0 80px;
+  position:relative;
+}
 
-        /* ── CARD PROGRESSO ── */
-        .progress-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 36px 40px;
-            margin-bottom: 48px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        .progress-card::before {
-            content: ''; position: absolute; top: -100px; right: -50px;
-            width: 300px; height: 300px; border-radius: 50%;
-            background: var(--orange); filter: blur(100px); opacity: 0.1; pointer-events: none;
-        }
-        
-        .progress-top {
-            display: flex; justify-content: space-between; align-items: flex-end;
-            margin-bottom: 24px; position: relative; z-index: 2; flex-wrap: wrap; gap: 20px;
-        }
-        .progress-top h3 { font-size: 1.6rem; color: var(--text-main); margin-bottom: 4px; }
-        .progress-subtitle { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
-        .progress-percent { font-family: var(--font-title); font-size: 3.5rem; font-weight: 800; color: var(--orange); line-height: 1; letter-spacing: -2px; }
-        
-        .progress-bar-wrap {
-            width: 100%; height: 10px; background: rgba(0, 0, 0, 0.4);
-            border-radius: 5px; margin-bottom: 32px; position: relative; z-index: 2;
-            overflow: hidden; border: 1px solid rgba(255,255,255,0.05);
-        }
-        .progress-bar-fill {
-            height: 100%; background: linear-gradient(90deg, var(--orange-dark), var(--orange));
-            border-radius: 5px; width: 0%; transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
-            position: relative;
-        }
-        .progress-bar-fill::after {
-            content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 2s infinite;
-        }
-        @keyframes shine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.quiz-glow{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% -10%,rgba(200,168,75,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 35% 35% at 90% 95%,rgba(200,168,75,.06) 0%,transparent 60%);
+}
 
-        /* Mapa de Módulos (Topicos) */
-        .module-map {
-            display: flex; justify-content: space-between; position: relative; z-index: 2;
-        }
-        .mod-step {
-            display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; position: relative;
-        }
-        .mod-step:not(:last-child)::after {
-            content: ''; position: absolute; top: 16px; left: 50%; width: 100%;
-            height: 2px; background: var(--border-color); z-index: -1;
-        }
-        .mod-circle {
-            width: 34px; height: 34px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.85rem; font-weight: 700; background: var(--bg-dark);
-            color: var(--text-muted); border: 2px solid var(--border-color);
-            transition: all 0.35s ease;
-        }
-        .mod-circle.completed {
-            background: var(--green); color: var(--text-main); border-color: var(--green);
-            box-shadow: 0 0 16px rgba(16, 185, 129, 0.4); transform: scale(1.15);
-        }
-        .mod-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.quiz-inner{
+  position:relative;z-index:1;
+  width:100%;max-width:560px;
+  padding:0 24px;
+}
 
-        /* ── SEÇÕES (ACORDEÕES) ── */
-        .phase-header {
-            display: flex; align-items: center; gap: 16px; margin: 40px 0 0; padding: 20px 24px;
-            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md);
-            cursor: pointer; transition: all 0.25s ease; user-select: none; position: relative;
-        }
-        .phase-header:hover { border-color: var(--orange); background: var(--bg-card-hover); }
-        .phase-header.open { border-color: var(--orange); border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
-        
-        .phase-chevron { margin-left: auto; color: var(--text-muted); font-size: 0.9rem; transition: transform 0.3s ease; flex-shrink: 0; }
-        .phase-header.open .phase-chevron { transform: rotate(180deg); color: var(--orange); }
-        .phase-progress-mini { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
-        .phase-progress-mini.all-done { color: var(--green); }
+.brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:48px;
+  text-align:center;
+  opacity:.85;
+}
 
-        .phase-body {
-            display: none; border: 1px solid var(--orange); border-top: none;
-            border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md);
-            padding: 24px; background: rgba(30, 41, 59, 0.4); margin-bottom: 0;
-        }
-        .phase-body.open { display: block; }
-        
-        .phase-badge {
-            display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem;
-            font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 30px;
-            background: var(--bg-dark); color: var(--text-light); border: 1px solid var(--border-color);
-        }
-        .phase-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
+/* Progress */
+.progress-wrap{width:100%;margin-bottom:40px}
+.progress-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:.05em}
+.progress-bar-bg{height:2px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:100px;transition:width .6s cubic-bezier(.4,0,.2,1)}
 
-        /* ── CARDS DOS MÓDULOS ── */
-        .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .day-card {
-            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md);
-            padding: 28px 24px; display: flex; flex-direction: column; transition: all 0.3s ease; position: relative;
-        }
-        .day-card:hover { transform: translateY(-4px); border-color: var(--orange); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .day-card.is-done { border-color: var(--green); background: rgba(16, 185, 129, 0.05); }
-        
-        .day-card-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
-        .day-icon {
-            width: 48px; height: 48px; border-radius: var(--radius-sm);
-            background: var(--bg-dark); color: var(--orange); border: 1px solid var(--border-color);
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
-        }
-        .day-card.is-done .day-icon { background: var(--green-soft); color: var(--green); border-color: var(--green); }
-        
-        .day-num { font-family: var(--font-title); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
-        .day-card.is-done .day-num { color: var(--green); }
-        .day-title { font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
-        .day-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; flex-grow: 1; margin-bottom: 24px; }
-        
-        .card-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
-        .btn-access {
-            background: var(--orange); color: #fff; padding: 12px 16px; border-radius: var(--radius-sm);
-            font-family: var(--font-title); font-weight: 600; font-size: 0.9rem; text-align: center;
-            transition: all 0.25s; display: block; border: none;
-        }
-        .btn-access:hover { background: var(--orange-dark); transform: translateY(-2px); }
-        
-        .btn-complete {
-            background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);
-            padding: 10px 16px; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.85rem;
-            cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
-        }
-        .btn-complete:hover { border-color: var(--orange); color: var(--orange); background: rgba(249,115,22,0.05); }
-        .btn-complete.is-completed { background: var(--green-soft); color: var(--green); border-color: var(--green); }
+/* Slide */
+.quiz-slide{display:none;flex-direction:column;animation:slideRight .4s ease both}
+.quiz-slide.active{display:flex}
 
-        /* ── RECURSOS EXTRAS (BÔNUS / APP) ── */
-        .extras-section { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border-color); }
-        .section-title { font-family: var(--font-title); font-size: 1.8rem; color: var(--text-main); margin-bottom: 24px; text-align: left; }
-        .section-title span { color: var(--orange); }
-        
-        .extras-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .extra-card {
-            background: linear-gradient(145deg, var(--bg-card) 0%, rgba(249,115,22,0.05) 100%);
-            border: 1px solid var(--orange); border-radius: var(--radius-md);
-            padding: 32px 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; flex-direction: column;
-            transition: all 0.3s ease; align-items: flex-start;
-        }
-        .extra-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15); }
-        
-        .extra-icon {
-            width: 54px; height: 54px; border-radius: 12px;
-            background: var(--orange); color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
-        }
-        .extra-tag { font-family: var(--font-title); font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
-        .extra-title { font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
-        .extra-desc { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; margin-bottom: 24px; flex-grow: 1; }
-        
-        .btn-extra {
-            background: var(--bg-dark); color: var(--orange); border: 1px solid var(--orange);
-            padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; transition: all 0.25s; width: 100%; text-align: center;
-        }
-        .btn-extra:hover { background: var(--orange); color: #fff; }
+.q-tag{
+  display:inline-block;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);background:var(--gold-dim);
+  border:1px solid var(--border);
+  padding:5px 14px;border-radius:100px;
+  margin-bottom:20px;align-self:flex-start;
+}
 
-        /* ── FOOTER ── */
-        footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border-color); margin-top: 64px; }
-        footer p { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.q-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,5.5vw,38px);
+  font-weight:600;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+.q-title em{font-style:italic;color:var(--gold)}
 
-        /* ── AJUSTES MOBILE EXCLUSIVOS ── */
-        @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            main { padding: 32px 0 80px; }
-            
-            .welcome-header h1 { font-size: 1.8rem; }
-            .welcome-header p { font-size: 1rem; }
-            
-            .progress-card { padding: 24px 20px; margin-bottom: 32px; }
-            .progress-top h3 { font-size: 1.4rem; }
-            .progress-percent { font-size: 2.5rem; }
-            
-            .module-map { overflow-x: auto; padding-bottom: 10px; gap: 8px; justify-content: flex-start; }
-            .mod-step { min-width: 50px; flex: none; }
-            .mod-step::after { display: none; }
-            .mod-circle { width: 32px; height: 32px; font-size: 0.8rem; border-width: 1.5px; }
-            .mod-label { font-size: 0.65rem; }
-            
-            /* Cabeçalho do Acordeão otimizado */
-            .phase-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 16px;
-                gap: 8px;
-            }
-            .phase-chevron { position: absolute; top: 20px; right: 20px; margin: 0; }
-            .phase-name { font-size: 1.1rem; padding-right: 24px; line-height: 1.3; }
-            .phase-progress-mini { margin-top: 4px; font-size: 0.85rem; }
-            
-            .day-card { padding: 24px 20px; }
-            .extra-card { padding: 24px 20px; }
-        }
-    </style>
+.q-sub{font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7}
+
+/* Options */
+.options{display:flex;flex-direction:column;gap:10px}
+
+.opt{
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;
+  padding:17px 20px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:16px;
+  text-align:left;
+  transition:border-color .2s,background .2s,transform .15s;
+}
+.opt:hover{border-color:var(--border-strong);background:var(--gold-dim);transform:translateX(4px)}
+.opt.selected{border-color:var(--border-strong);background:var(--gold-dim)}
+
+.opt-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center}
+.opt-label{font-size:14px;font-weight:400;line-height:1.4;flex:1}
+.opt-check{
+  margin-left:auto;flex-shrink:0;
+  width:20px;height:20px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:transparent;
+  transition:all .2s;
+}
+.opt.selected .opt-check{background:var(--gold);border-color:var(--gold);color:#080808;font-weight:700}
+
+/* Next btn */
+.btn-next{
+  margin-top:24px;
+  opacity:0;pointer-events:none;
+  animation:none;
+  transition:opacity .3s,transform .2s,box-shadow .2s;
+}
+.btn-next.visible{opacity:1;pointer-events:all;animation:fadeUp .3s ease both}
+
+/* Name input step */
+.name-step{display:flex;flex-direction:column;animation:slideRight .4s ease both}
+.name-input{
+  width:100%;background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px 20px;
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;font-weight:400;
+  outline:none;
+  margin-bottom:20px;
+  transition:border-color .2s;
+}
+.name-input:focus{border-color:var(--border-strong)}
+.name-input::placeholder{color:var(--muted)}
+
+/* ══════════════════════════════
+   LOADING
+══════════════════════════════ */
+#loading-section{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 24px;
+}
+
+.loading-inner{text-align:center;max-width:400px}
+
+.loader-ring{
+  width:64px;height:64px;
+  border:2px solid rgba(200,168,75,.1);
+  border-top-color:var(--gold);
+  border-radius:50%;
+  animation:spin 1.2s linear infinite;
+  margin:0 auto 32px;
+}
+
+.loading-steps{margin-top:32px;display:flex;flex-direction:column;gap:12px;text-align:left}
+.loading-step{
+  display:flex;align-items:center;gap:14px;
+  font-size:13px;color:var(--muted);
+  opacity:0;transition:opacity .4s,color .4s;
+}
+.loading-step.done{opacity:1;color:var(--text)}
+.loading-step.done .step-dot{background:var(--green)}
+.step-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0;transition:background .4s}
+
+/* ══════════════════════════════
+   RESULT / LANDING PAGE
+══════════════════════════════ */
+#lp-section{display:none}
+
+/* TOP BAR */
+.topbar{
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  color:#080808;
+  text-align:center;
+  padding:11px 20px;
+  font-size:12px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:80px 0 70px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%,rgba(200,168,75,.13) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 40% at 85% 90%,rgba(200,168,75,.07) 0%,transparent 60%);
+}
+
+.hero-eyebrow{
+  display:inline-block;
+  border:1px solid var(--border);
+  color:var(--gold);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  padding:7px 20px;border-radius:100px;
+  margin-bottom:28px;
+  animation:fadeUp .6s ease both;
+}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,6.5vw,76px);
+  font-weight:700;line-height:1.05;
+  max-width:700px;margin:0 auto;
+  animation:fadeUp .7s .1s ease both;
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+
+.result-banner{
+  display:inline-block;
+  background:var(--gold-dim);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 24px;
+  margin:28px auto 0;
+  font-size:14px;color:#ccc;
+  animation:fadeUp .7s .2s ease both;
+  text-align:center;
+}
+.result-banner strong{color:var(--text)}
+.result-banner .tag{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#080808;font-weight:700;font-size:12px;
+  padding:3px 12px;border-radius:100px;margin-left:6px;
+  vertical-align:middle;
+}
+
+.hero-proof{
+  display:flex;gap:28px;margin:36px auto 0;flex-wrap:wrap;
+  justify-content:center;
+  animation:fadeUp .7s .3s ease both;
+}
+.proof-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#888}
+.proof-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+.hero-cta{margin-top:40px;animation:fadeUp .7s .4s ease both}
+.hero-cta .btn-sub{margin-top:12px;font-size:11px;color:var(--muted);display:block;text-align:center}
+
+/* SECTIONS */
+.section{padding:80px 0}
+.section-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,46px);font-weight:700;line-height:1.15}
+.section-title em{font-style:italic;color:var(--gold)}
+
+/* WHY SECTION */
+.why{background:var(--surface)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
+.why-card{
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;padding:24px 20px;
+  background:var(--bg);
+  transition:border-color .2s,transform .2s;
+}
+.why-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.why-icon{font-size:22px;margin-bottom:14px}
+.why-card h3{font-size:14px;font-weight:500;margin-bottom:6px}
+.why-card p{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* MECHANISM */
+.mech-steps{margin-top:50px;display:flex;flex-direction:column;position:relative}
+.mech-steps::before{
+  content:'';position:absolute;
+  left:20px;top:10px;bottom:10px;
+  width:1px;background:linear-gradient(to bottom,transparent,var(--border),var(--border),transparent);
+}
+.mech-step{display:flex;gap:24px;margin-bottom:40px;position:relative}
+.step-num{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:var(--surface);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gold);
+  position:relative;z-index:1;
+}
+.step-content h3{font-size:16px;font-weight:500;margin-bottom:6px;padding-top:8px}
+.step-content p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* OFFER */
+.offer-section{background:var(--surface)}
+.offer-box{
+  border:1px solid var(--border);
+  border-radius:16px;padding:48px 40px;
+  background:var(--bg);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.offer-box::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,168,75,.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.offer-badge{
+  display:inline-block;
+  background:rgba(224,92,92,.1);
+  border:1px solid rgba(224,92,92,.3);
+  color:var(--danger);
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 18px;border-radius:100px;
+  margin-bottom:24px;
+  animation:pulse 2.5s infinite;
+}
+.offer-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,42px);font-weight:700;
+  margin-bottom:32px;
+}
+.price-area{margin-bottom:32px}
+.from-price{text-decoration:line-through;color:var(--muted);font-size:16px;margin-bottom:4px}
+.main-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:700;color:var(--gold);line-height:1;
+}
+.main-price sup{font-size:28px;vertical-align:super;font-family:'DM Sans',sans-serif;font-weight:300}
+.main-price span{font-size:32px}
+.price-note{font-size:12px;color:var(--muted);margin-top:6px}
+
+.includes{
+  display:flex;flex-direction:column;gap:12px;
+  text-align:left;margin:32px 0;
+  max-width:460px;margin-left:auto;margin-right:auto;
+}
+.include-item{display:flex;gap:14px;align-items:flex-start;font-size:14px}
+.inc-check{color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px}
+.include-item strong{font-weight:600}
+.include-item span{color:#ccc;line-height:1.5}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:44px}
+.testi-card{
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:28px;
+  transition:border-color .2s,transform .2s;
+}
+.testi-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.testi-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:13px;color:#bbb;line-height:1.7;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);font-weight:700;
+}
+.testi-name{font-size:13px;font-weight:500}
+.testi-detail{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* GUARANTEE */
+.guarantee-box{
+  display:flex;gap:24px;align-items:flex-start;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;padding:32px;
+  margin-top:40px;
+}
+.guarantee-icon{font-size:40px;flex-shrink:0}
+.guarantee-box h3{font-size:17px;font-weight:600;margin-bottom:10px}
+.guarantee-box p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* FAQ */
+.faq-list{margin-top:40px}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06);padding:0}
+.faq-q{
+  width:100%;background:none;border:none;
+  color:var(--text);text-align:left;
+  padding:22px 0;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--gold)}
+.faq-arrow{color:var(--gold);font-size:20px;flex-shrink:0;transition:transform .3s;font-family:'Cormorant Garamond',serif}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-a{display:none;font-size:13px;color:var(--muted);line-height:1.8;padding-bottom:22px}
+.faq-item.open .faq-a{display:block}
+
+/* FINAL CTA */
+.final-cta{
+  background:var(--surface);
+  text-align:center;padding:90px 0;
+  position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(200,168,75,.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.final-cta .container{position:relative;z-index:1}
+.final-cta p{color:#999;font-size:14px;margin-top:16px;margin-bottom:36px}
+
+/* STICKY */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(8,8,8,.96);
+  backdrop-filter:blur(10px);
+  border-top:1px solid var(--border);
+  padding:14px 20px;
+  display:none;z-index:100;
+  align-items:center;justify-content:space-between;gap:16px;
+}
+.sticky-bar.visible{display:flex}
+.sticky-price{font-size:13px;color:#888}
+.sticky-price strong{font-size:18px;font-family:'Cormorant Garamond',serif;color:var(--gold);font-weight:700}
+.sticky-bar .btn{padding:14px 28px;font-size:13px}
+
+@media(max-width:520px){
+  .offer-box{padding:32px 20px}
+  .guarantee-box{flex-direction:column}
+  .sticky-bar{flex-direction:column;text-align:center}
+  .sticky-price{display:none}
+}
+</style>
 </head>
 <body>
 
-    <!-- ── HEADER ── -->
-    <header>
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">Montador<span>PRO</span></div>
-                <div class="header-right">
-                    <span class="header-name">Painel do Aluno</span>
-                    <div class="avatar">
-                        <i class="fas fa-tools" style="font-size: 16px;"></i>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════════════════════
+     QUIZ SECTION
+══════════════════════════════ -->
+<section id="quiz-section">
+  <div class="quiz-glow"></div>
+  <div class="quiz-inner">
+
+    <div class="brand">Método Respira</div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-meta">
+        <span id="progressLabel">Etapa 1 de 5</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- STEP 0: NOME -->
+    <div class="name-step active" id="slide-name">
+      <div class="q-tag">Diagnóstico pessoal</div>
+      <h2 class="q-title serif">Para quem<br>é a análise?</h2>
+      <p class="q-sub">Vamos personalizar seu protocolo. Digite seu primeiro nome.</p>
+      <input type="text" class="name-input" id="userName" placeholder="Ex: João" autocomplete="given-name">
+      <button class="btn btn-full" onclick="handleName()">Iniciar diagnóstico →</button>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-slide" id="slide-0">
+      <div class="q-tag">Sobre você</div>
+      <h2 class="q-title serif">Há quanto tempo você<br><em>fuma?</em></h2>
+      <p class="q-sub">Isso define a intensidade do protocolo ideal para o seu caso.</p>
+      <div class="options">
+        <div class="opt" data-slide="0" data-val="a"><div class="opt-icon">🌱</div><div class="opt-label">Menos de 2 anos</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="0" data-val="b"><div class="opt-icon">📅</div><div class="opt-label">Entre 2 e 10 anos</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="0" data-val="c"><div class="opt-icon">🔒</div><div class="opt-label">Mais de 10 anos</div><div class="opt-check">✓</div></div>
+      </div>
+      <button class="btn btn-full btn-next" id="next-0">Continuar →</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-slide" id="slide-1">
+      <div class="q-tag">Suas tentativas</div>
+      <h2 class="q-title serif">Você já tentou<br><em>parar antes?</em></h2>
+      <p class="q-sub">A maioria de quem chega aqui já tentou pelo menos uma vez.</p>
+      <div class="options">
+        <div class="opt" data-slide="1" data-val="a"><div class="opt-icon">🙅</div><div class="opt-label">Nunca tentei parar</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="1" data-val="b"><div class="opt-icon">💪</div><div class="opt-label">Já tentei, mas não consegui manter</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="1" data-val="c"><div class="opt-icon">🔁</div><div class="opt-label">Já tentei várias vezes e sempre recaí</div><div class="opt-check">✓</div></div>
+      </div>
+      <button class="btn btn-full btn-next" id="next-1">Continuar →</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-slide" id="slide-2">
+      <div class="q-tag">Seus gatilhos</div>
+      <h2 class="q-title serif">Quando a vontade de<br>fumar é mais <em>forte?</em></h2>
+      <p class="q-sub">Esse é o gatilho que o protocolo vai trabalhar primeiro com você.</p>
+      <div class="options">
+        <div class="opt" data-slide="2" data-val="a"><div class="opt-icon">😰</div><div class="opt-label">Quando estou estressado ou ansioso</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="2" data-val="b"><div class="opt-icon">☕</div><div class="opt-label">Em momentos de rotina (café, refeição, pausa)</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="2" data-val="c"><div class="opt-icon">🍻</div><div class="opt-label">Em situações sociais (bebida, amigos fumantes)</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="2" data-val="d"><div class="opt-icon">😔</div><div class="opt-label">Quando estou entediado ou sozinho</div><div class="opt-check">✓</div></div>
+      </div>
+      <button class="btn btn-full btn-next" id="next-2">Continuar →</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-slide" id="slide-3">
+      <div class="q-tag">Seu maior receio</div>
+      <h2 class="q-title serif">O que mais te preocupa<br>em <em>parar?</em></h2>
+      <p class="q-sub">Não existe resposta errada — isso calibra o foco do protocolo.</p>
+      <div class="options">
+        <div class="opt" data-slide="3" data-val="a"><div class="opt-icon">😤</div><div class="opt-label">Ficar irritado e descontar nas pessoas</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="3" data-val="b"><div class="opt-icon">🍔</div><div class="opt-label">Engordar por comer mais</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="3" data-val="c"><div class="opt-icon">🌀</div><div class="opt-label">Não conseguir lidar com o estresse</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="3" data-val="d"><div class="opt-icon">🔄</div><div class="opt-label">Recair de novo e me frustrar</div><div class="opt-check">✓</div></div>
+      </div>
+      <button class="btn btn-full btn-next" id="next-3">Continuar →</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-slide" id="slide-4">
+      <div class="q-tag">Sua motivação</div>
+      <h2 class="q-title serif">Por que você quer<br><em>parar agora?</em></h2>
+      <p class="q-sub">Sua razão principal ativa a parte mais poderosa do protocolo.</p>
+      <div class="options">
+        <div class="opt" data-slide="4" data-val="a"><div class="opt-icon">❤️</div><div class="opt-label">Saúde — estou sentindo os efeitos no meu corpo</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="4" data-val="b"><div class="opt-icon">👨‍👩‍👧</div><div class="opt-label">Família — quero dar um exemplo melhor</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="4" data-val="c"><div class="opt-icon">💸</div><div class="opt-label">Dinheiro — cansado de gastar com isso</div><div class="opt-check">✓</div></div>
+        <div class="opt" data-slide="4" data-val="d"><div class="opt-icon">🏆</div><div class="opt-label">Orgulho — quero me provar que consigo</div><div class="opt-check">✓</div></div>
+      </div>
+      <button class="btn btn-full btn-next" id="next-4">Ver meu resultado →</button>
+    </div>
+
+  </div><!-- /quiz-inner -->
+</section>
+
+<!-- ══════════════════════════════
+     LOADING
+══════════════════════════════ -->
+<section id="loading-section" class="hidden">
+  <div class="loading-inner">
+    <div class="loader-ring"></div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)" id="loadingTitle">Analisando respostas…</p>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Configurando seu protocolo personalizado</p>
+    <div class="loading-steps">
+      <div class="loading-step" id="ls-1"><div class="step-dot"></div>Identificando padrão de dependência</div>
+      <div class="loading-step" id="ls-2"><div class="step-dot"></div>Mapeando gatilhos emocionais</div>
+      <div class="loading-step" id="ls-3"><div class="step-dot"></div><span id="ls3-text">Configurando protocolo…</span></div>
+      <div class="loading-step" id="ls-4"><div class="step-dot"></div>Preparando sequência de 7 dias</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     LANDING PAGE
+══════════════════════════════ -->
+<section id="lp-section">
+
+  <!-- TOP BAR -->
+  <div class="topbar">⚡ Protocolo gerado — acesso por tempo limitado</div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-eyebrow">Análise concluída · Protocolo personalizado</div>
+      <h1>Seu plano está pronto,<br><em id="heroName"></em>.</h1>
+
+      <div class="result-banner">
+        Diagnóstico: seu vício é <strong>predominantemente emocional</strong>
+        <span class="tag">Nível Subconsciente</span>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof-item"><div class="proof-dot"></div>Sem força de vontade</div>
+        <div class="proof-item"><div class="proof-dot"></div>Sem irritabilidade extrema</div>
+        <div class="proof-item"><div class="proof-dot"></div>Sem engordar</div>
+        <div class="proof-item"><div class="proof-dot"></div>15 min por dia</div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn">
+          Quero Acesso Imediato — R$&nbsp;16,90
+        </a>
+        <span class="btn-sub">🔒 Pagamento seguro · Garantia de 7 dias · Acesso em 2 minutos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR QUE NÃO FUNCIONA -->
+  <section class="why section">
+    <div class="container reveal">
+      <p class="section-label">O problema real</p>
+      <h2 class="section-title">Por que <em>força de vontade</em><br>não funciona</h2>
+      <p style="margin-top:16px;font-size:14px;color:#999;max-width:520px;line-height:1.8">
+        O cigarro tem duas camadas: a química (nicotina) e a emocional (o que ele representa pra sua mente). Remédios tratam a química — que passa em dias. O que faz você recair é a camada emocional. É ela que o Método Respira dissolve.
+      </p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🚬</div>
+          <h3>Adesivos e remédios</h3>
+          <p>Tratam apenas a dependência química. Deixam o vício emocional intacto — o que causa a recaída.</p>
         </div>
-    </header>
-
-    <!-- ── MAIN ── -->
-    <main>
-        <div class="container">
-
-            <!-- Boas-vindas -->
-            <div class="welcome-header">
-                <h1>Bem-vindo à <span>sua nova profissão.</span></h1>
-                <p>Acompanhe seu progresso e acesse as aulas e ferramentas exclusivas abaixo.</p>
-            </div>
-
-            <!-- ── CARD PROGRESSO ── -->
-            <div class="progress-card">
-                <div class="progress-top">
-                    <div>
-                        <h3>Seu Progresso</h3>
-                        <div class="progress-subtitle">Rumo à sua primeira montagem lucrativa</div>
-                    </div>
-                    <div class="progress-stats">
-                        <div class="progress-percent" id="progress-text">0%</div>
-                    </div>
-                </div>
-
-                <div class="progress-bar-wrap">
-                    <div class="progress-bar-fill" id="progress-bar"></div>
-                </div>
-
-                <!-- Mapa dos Módulos -->
-                <div class="module-map" id="module-map">
-                    <div class="mod-step"><div class="mod-circle" data-mod="1">1</div><div class="mod-label">Mod 1</div></div>
-                    <div class="mod-step"><div class="mod-circle" data-mod="2">2</div><div class="mod-label">Mod 2</div></div>
-                    <div class="mod-step"><div class="mod-circle" data-mod="3">3</div><div class="mod-label">Mod 3</div></div>
-                    <div class="mod-step"><div class="mod-circle" data-mod="4">4</div><div class="mod-label">Mod 4</div></div>
-                    <div class="mod-step"><div class="mod-circle" data-mod="5">5</div><div class="mod-label">Mod 5</div></div>
-                </div>
-            </div>
-
-            <!-- ── FASE 1: PREPARAÇÃO ── -->
-            <div class="phase-accordion">
-                <div class="phase-header" data-phase="1">
-                    <span class="phase-badge"><i class="fas fa-toolbox"></i> Fase 1</span>
-                    <span class="phase-name">A Preparação — Módulos 1 e 2</span>
-                    <span class="phase-progress-mini" id="mini-1"></span>
-                    <i class="fas fa-chevron-down phase-chevron"></i>
-                </div>
-                <div class="phase-body" id="body-1">
-                    <div class="days-grid">
-                        
-                        <div class="day-card">
-                            <div class="day-card-top">
-                                <div class="day-icon"><i class="fas fa-wrench"></i></div>
-                                <div><div class="day-num">Módulo 01</div><div class="day-title">O Kit de Ferramentas</div></div>
-                            </div>
-                            <p class="day-desc">O que você realmente precisa comprar (gastando pouco) e o que é puro desperdício de dinheiro para iniciantes.</p>
-                            <div class="card-actions">
-                                <a href="INSERIR_LINK_MODULO_1" class="btn-access" target="_blank">Acessar Aula</a>
-                                <button class="btn-complete toggle-btn" data-mod="1"><i class="far fa-circle"></i> Marcar Concluído</button>
-                            </div>
-                        </div>
-
-                        <div class="day-card">
-                            <div class="day-card-top">
-                                <div class="day-icon"><i class="fas fa-book-open"></i></div>
-                                <div><div class="day-num">Módulo 02</div><div class="day-title">Decifrando Manuais</div></div>
-                            </div>
-                            <p class="day-desc">O segredo para bater o olho em qualquer manual complexo e entender a ordem exata de montagem sem cometer erros.</p>
-                            <div class="card-actions">
-                                <a href="INSERIR_LINK_MODULO_2" class="btn-access" target="_blank">Acessar Aula</a>
-                                <button class="btn-complete toggle-btn" data-mod="2"><i class="far fa-circle"></i> Marcar Concluído</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── FASE 2: MÃO NA MASSA ── -->
-            <div class="phase-accordion">
-                <div class="phase-header" data-phase="2">
-                    <span class="phase-badge"><i class="fas fa-tools"></i> Fase 2</span>
-                    <span class="phase-name">A Prática — Módulo 3</span>
-                    <span class="phase-progress-mini" id="mini-2"></span>
-                    <i class="fas fa-chevron-down phase-chevron"></i>
-                </div>
-                <div class="phase-body" id="body-2">
-                    <div class="days-grid">
-
-                        <div class="day-card">
-                            <div class="day-card-top">
-                                <div class="day-icon"><i class="fas fa-hammer"></i></div>
-                                <div><div class="day-num">Módulo 03</div><div class="day-title">Técnicas de Montagem</div></div>
-                            </div>
-                            <p class="day-desc">O núcleo do curso: como alinhar portas, regular dobradiças, instalar corrediças e salvar peças que vieram tortas de fábrica.</p>
-                            <div class="card-actions">
-                                <a href="INSERIR_LINK_MODULO_3" class="btn-access" target="_blank">Acessar Aula</a>
-                                <button class="btn-complete toggle-btn" data-mod="3"><i class="far fa-circle"></i> Marcar Concluído</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── FASE 3: O NEGÓCIO ── -->
-            <div class="phase-accordion">
-                <div class="phase-header" data-phase="3">
-                    <span class="phase-badge"><i class="fas fa-hand-holding-usd"></i> Fase 3</span>
-                    <span class="phase-name">Clientes e Dinheiro — Módulos 4 e 5</span>
-                    <span class="phase-progress-mini" id="mini-3"></span>
-                    <i class="fas fa-chevron-down phase-chevron"></i>
-                </div>
-                <div class="phase-body" id="body-3">
-                    <div class="days-grid">
-
-                        <div class="day-card">
-                            <div class="day-card-top">
-                                <div class="day-icon"><i class="fas fa-users"></i></div>
-                                <div><div class="day-num">Módulo 04</div><div class="day-title">A Máquina de Atrair Clientes</div></div>
-                            </div>
-                            <p class="day-desc">Use o Facebook do bairro, OLX e WhatsApp para conseguir serviços logo na primeira semana, sem gastar com anúncios.</p>
-                            <div class="card-actions">
-                                <a href="INSERIR_LINK_MODULO_4" class="btn-access" target="_blank">Acessar Aula</a>
-                                <button class="btn-complete toggle-btn" data-mod="4"><i class="far fa-circle"></i> Marcar Concluído</button>
-                            </div>
-                        </div>
-
-                        <div class="day-card">
-                            <div class="day-card-top">
-                                <div class="day-icon"><i class="fas fa-calculator"></i></div>
-                                <div><div class="day-num">Módulo 05</div><div class="day-title">Precificação Perfeita</div></div>
-                            </div>
-                            <p class="day-desc">A tabela de preços 2025 para você nunca cobrar barato demais e tomar prejuízo, nem caro demais e perder o cliente.</p>
-                            <div class="card-actions">
-                                <a href="INSERIR_LINK_MODULO_5" class="btn-access" target="_blank">Acessar Aula</a>
-                                <button class="btn-complete toggle-btn" data-mod="5"><i class="far fa-circle"></i> Marcar Concluído</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── RECURSOS EXTRAS (BÔNUS) ── -->
-            <div class="extras-section">
-                <h2 class="section-title">O Aplicativo de Bolso <span>(Bônus)</span></h2>
-                <div class="extras-grid">
-
-                    <div class="extra-card">
-                        <div class="extra-icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <div class="extra-tag">Ferramenta 1</div>
-                        <div class="extra-title">Calculadora Automática</div>
-                        <p class="extra-desc">Insira o tipo de móvel e o tamanho. O sistema te diz instantaneamente o valor ideal para cobrar pelo seu serviço.</p>
-                        <a href="INSERIR_LINK_APP_CALCULADORA" class="btn-extra" target="_blank">Abrir App</a>
-                    </div>
-
-                    <div class="extra-card">
-                        <div class="extra-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                        <div class="extra-tag">Ferramenta 2</div>
-                        <div class="extra-title">Gerador de Recibo</div>
-                        <p class="extra-desc">Passe mais profissionalismo enviando um recibo digital em PDF direto para o WhatsApp do cliente com apenas 1 clique.</p>
-                        <a href="INSERIR_LINK_APP_RECIBO" class="btn-extra" target="_blank">Abrir App</a>
-                    </div>
-
-                    <div class="extra-card">
-                        <div class="extra-icon"><i class="fas fa-calendar-check"></i></div>
-                        <div class="extra-tag">Ferramenta 3</div>
-                        <div class="extra-title">Agenda Inteligente</div>
-                        <p class="extra-desc">Organize seus horários do final de semana na palma da mão, evite encavalar clientes e controle seu faturamento do mês.</p>
-                        <a href="INSERIR_LINK_APP_AGENDA" class="btn-extra" target="_blank">Abrir App</a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div><!-- /container -->
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Curso Montador de Móveis Pro. Todos os direitos reservados.</p>
+        <div class="why-card">
+          <div class="why-icon">🧠</div>
+          <h3>Força de vontade</h3>
+          <p>Luta contra o consciente, mas o gatilho vive no subconsciente. A batalha é desigual por natureza.</p>
         </div>
-    </footer>
+        <div class="why-card">
+          <div class="why-icon">🎧</div>
+          <h3>Método Respira</h3>
+          <p>Acessa diretamente a camada subconsciente e dissolve a associação emocional — sem luta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // ==========================================
-        // AVISO DE LINKS NÃO CONFIGURADOS
-        // ==========================================
-        // Intercepta cliques nos links para avisar que precisa configurar a URL (caso tenha "INSERIR_LINK_")
-        document.addEventListener('click', function(e) {
-            const linkBtn = e.target.closest('.btn-access') || e.target.closest('.btn-extra');
-            if (linkBtn) {
-                if (linkBtn.getAttribute('href').includes('INSERIR_LINK_')) {
-                    e.preventDefault();
-                    alert("Aviso do Sistema: O link para este conteúdo ainda não foi configurado pelo administrador.");
-                }
-            }
-        });
+  <!-- MECANISMO -->
+  <section class="section" style="background:var(--bg)">
+    <div class="container reveal">
+      <p class="section-label">Como funciona</p>
+      <h2 class="section-title">Hipnoterapia em<br>estado <em>theta</em></h2>
+      <p style="margin-top:16px;font-size:14px;color:#999;max-width:520px;line-height:1.8">
+        Estado theta é o mesmo que você entra ao adormecer — quando o subconsciente está completamente receptivo. Os áudios induzem esse estado e instalam novos padrões, sem nenhum esforço da sua parte.
+      </p>
+      <div class="mech-steps">
+        <div class="mech-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Você ouve o áudio (15–22 min)</h3>
+            <p>Frequências sonoras conduzem sua mente ao estado theta. Deite, coloque o fone, feche os olhos.</p>
+          </div>
+        </div>
+        <div class="mech-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>O subconsciente é acessado</h3>
+            <p>Nesse estado, a mente está aberta. O protocolo dissolve as associações emocionais que ligam o cigarro ao prazer e ao alívio.</p>
+          </div>
+        </div>
+        <div class="mech-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>A vontade vai embora — sem luta</h3>
+            <p>Você não suprime a vontade. Ela simplesmente deixa de existir. Como quem nunca fumou e não sente falta alguma.</p>
+          </div>
+        </div>
+        <div class="mech-step" style="margin-bottom:0">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>7 dias para consolidar a mudança</h3>
+            <p>Cada dia aborda um aspecto: gatilhos, ansiedade, situações sociais, sono. Ao final, você não se enxerga mais como fumante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // ==========================================
-        // SISTEMA DE PROGRESSO DOS 5 MÓDULOS
-        // ==========================================
-        const TOTAL_MODULES = 5;
-        const STORAGE_KEY = 'curso_montador_progress';
-        const PHASE_MODULES = { 1:[1,2], 2:[3], 3:[4,5] };
+  <!-- OFERTA -->
+  <section class="offer-section section">
+    <div class="container reveal">
+      <div class="offer-box">
+        <div class="offer-badge">Oferta especial — tempo limitado</div>
+        <h2 class="offer-title serif">Protocolo Completo<br>de 7 Dias</h2>
+        <div class="price-area">
+          <div class="from-price">De R$ 27,00 por apenas</div>
+          <div class="main-price"><sup>R$</sup>16<span>,90</span></div>
+          <div class="price-note">Menos que o custo de 2 maços de cigarro.</div>
+        </div>
+        <div class="includes">
+          <div class="include-item"><span class="inc-check">✓</span><span><strong>7 sessões de hipnoterapia em áudio</strong> — uma por dia, com foco progressivo</span></div>
+          <div class="include-item"><span class="inc-check">✓</span><span><strong>Áudio SOS</strong> — intervenção rápida para crises de fissura</span></div>
+          <div class="include-item"><span class="inc-check">✓</span><span><strong>Reprogramação Noturna</strong> — 45 min para ouvir enquanto dorme</span></div>
+          <div class="include-item"><span class="inc-check">✓</span><span><strong>Ebook introdutório</strong> — como a hipnoterapia funciona no seu cérebro</span></div>
+          <div class="include-item"><span class="inc-check">✓</span><span><strong>Calculadora de economia</strong> — veja quanto você vai recuperar</span></div>
+        </div>
+        <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn btn-full">
+          Quero Meu Acesso Agora — R$&nbsp;16,90
+        </a>
+        <p style="margin-top:14px;font-size:11px;color:var(--muted);text-align:center">🔒 Pagamento seguro · Garantia incondicional de 7 dias · Acesso imediato</p>
+      </div>
+    </div>
+  </section>
 
-        let progressData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  <!-- DEPOIMENTOS -->
+  <section class="section" style="background:var(--surface)">
+    <div class="container-wide reveal">
+      <p class="section-label">Quem já reprogramou</p>
+      <h2 class="section-title">Eles também duvidavam</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Fumava há 20 anos e já tinha tentado de tudo. No terceiro dia do protocolo percebi que o maço estava cheio. Simplesmente esqueci de fumar."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">C</div>
+            <div><div class="testi-name">Carlos M.</div><div class="testi-detail">Livre há 8 meses · 20 anos de cigarro</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Meu maior medo era engordar. O protocolo trabalhou minha ansiedade com comida também. Parei de fumar e ainda emagreci 2kg."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">J</div>
+            <div><div class="testi-name">Juliana S.</div><div class="testi-detail">Livre há 3 meses · Ex-fumante de 12 anos</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Coloco o fone antes de dormir. A frequência me acalma de um jeito que nunca senti. Acordo sem tosse e sem vontade nenhuma."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div><div class="testi-name">Ricardo J.</div><div class="testi-detail">Livre há 21 dias · Resultado desde o dia 2</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function updateMiniProgress() {
-            [1,2,3].forEach(function(phase) {
-                const mods = PHASE_MODULES[phase];
-                const done = mods.filter(function(m){ return progressData[m]; }).length;
-                const el = document.getElementById('mini-'+phase);
-                if (!el) return;
-                if (done === mods.length) { 
-                    el.textContent = '✓ Concluída'; 
-                    el.className = 'phase-progress-mini all-done'; 
-                } else { 
-                    el.textContent = done + '/' + mods.length + ' módulos'; 
-                    el.className = 'phase-progress-mini'; 
-                }
-            });
+  <!-- GARANTIA -->
+  <section class="section">
+    <div class="container reveal">
+      <p class="section-label">Risco zero</p>
+      <h2 class="section-title">Garantia <em>incondicional</em><br>de 7 dias</h2>
+      <div class="guarantee-box">
+        <div class="guarantee-icon">🛡️</div>
+        <div>
+          <h3>O risco é todo nosso</h3>
+          <p>Acesse o protocolo completo, ouça os primeiros 3 dias de áudio e sinta a diferença. Se ao final do 3º dia você ainda sentir a mesma fissura de antes — devolvemos 100% do seu dinheiro, sem perguntas. Você fica com o acesso e nós ficamos com o prejuízo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--surface)">
+    <div class="container reveal">
+      <p class="section-label">Dúvidas frequentes</p>
+      <h2 class="section-title">Perguntas que você<br>provavelmente tem</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Hipnoterapia realmente funciona? Parece coisa de show de mágica. <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Hipnose clínica é reconhecida pela Associação Médica Americana desde 1958. O estado hipnótico é simplesmente um estado de foco profundo — o mesmo que você entra ao assistir um filme envolvente. Não tem nada de sobrenatural: é neurociência aplicada ao comportamento.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Preciso de fone de ouvido? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Recomendamos fones para melhor absorção das frequências sonoras, mas não é obrigatório. Funciona também pelo alto-falante do celular em ambiente tranquilo.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">E se eu fumar muito, o método ainda funciona? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Sim. O protocolo foi desenvolvido especialmente para fumantes de longa data. A dependência química varia, mas a reprogramação emocional funciona independente do tempo ou quantidade.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Quando vou começar a sentir resultado? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">A maioria relata mudança perceptível nos primeiros 2 a 3 dias — uma sensação de "distância" do cigarro, como se ele perdesse o brilho. A reprogramação completa acontece ao longo dos 7 dias.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como acesso depois de comprar? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">O acesso é imediato. Após o pagamento, você recebe o link por e-mail. Funciona em celular, tablet ou computador — sem instalar nada.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container reveal">
+      <p class="section-label">Sua decisão</p>
+      <h2 class="section-title serif">Você pode continuar<br><em>lutando.</em> Ou pode parar.</h2>
+      <p>R$ 16,90. Menos que um maço. Com garantia de 7 dias.</p>
+      <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn">
+        Quero Parar de Fumar Agora
+      </a>
+      <div style="margin-top:14px;font-size:11px;color:#555">🔒 Pagamento seguro · Acesso imediato · Garantia incondicional</div>
+    </div>
+  </section>
+
+</section><!-- /lp-section -->
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-price">Acesso completo por <strong>R$ 16,90</strong></div>
+  <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn">Garantir agora →</a>
+</div>
+
+<script>
+  // ── STATE ──
+  let userName = '';
+  let currentSlide = -1; // -1 = name step
+  const TOTAL = 5;
+  const answers = {};
+
+  // ── PROGRESS ──
+  function updateProgress(idx) {
+    const pct = Math.round((idx / TOTAL) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressLabel').textContent =
+      idx < TOTAL ? `Etapa ${idx + 1} de ${TOTAL}` : 'Análise completa';
+  }
+
+  // ── NAME STEP ──
+  function handleName() {
+    const input = document.getElementById('userName');
+    const val = input.value.trim();
+    if (!val) { input.focus(); input.style.borderColor = '#e05c5c'; return; }
+    userName = val.charAt(0).toUpperCase() + val.slice(1);
+    document.getElementById('heroName').textContent = userName;
+    document.getElementById('ls3-text').textContent = `Configurando protocolo para ${userName}…`;
+    document.getElementById('slide-name').style.display = 'none';
+    document.getElementById('progressWrap').style.display = '';
+    showSlide(0);
+    updateProgress(0);
+  }
+
+  // ── OPTION SELECTION ──
+  document.querySelectorAll('.opt').forEach(opt => {
+    opt.addEventListener('click', function() {
+      const s = this.dataset.slide;
+      document.querySelectorAll(`.opt[data-slide="${s}"]`).forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      answers[s] = this.dataset.val;
+      const btn = document.getElementById(`next-${s}`);
+      if (btn) btn.classList.add('visible');
+    });
+  });
+
+  // ── NEXT BUTTONS ──
+  for (let i = 0; i < TOTAL; i++) {
+    const btn = document.getElementById(`next-${i}`);
+    if (!btn) continue;
+    btn.addEventListener('click', function() {
+      if (!answers[i]) return;
+      document.getElementById(`slide-${i}`).classList.remove('active');
+      currentSlide = i + 1;
+      if (currentSlide < TOTAL) {
+        showSlide(currentSlide);
+        updateProgress(currentSlide);
+      } else {
+        startLoading();
+      }
+    });
+  }
+
+  function showSlide(idx) {
+    const el = document.getElementById(`slide-${idx}`);
+    if (el) { el.classList.add('active'); }
+  }
+
+  // ── LOADING ──
+  function startLoading() {
+    document.getElementById('quiz-section').classList.add('hidden');
+    document.getElementById('loading-section').classList.remove('hidden');
+    updateProgress(TOTAL);
+
+    const steps = ['ls-1','ls-2','ls-3','ls-4'];
+    steps.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).classList.add('done');
+        if (i === steps.length - 1) {
+          setTimeout(showLP, 900);
         }
+      }, 600 + i * 700);
+    });
+  }
 
-        function updateUI() {
-            let completed = 0;
-            for (let i = 1; i <= TOTAL_MODULES; i++) {
-                if (progressData[i]) completed++;
-                
-                // Círculos no mapa do topo
-                const circle = document.querySelector('.mod-circle[data-mod="'+i+'"]');
-                if (circle) circle.classList.toggle('completed', !!progressData[i]);
-                
-                // Botões de check nos cards
-                const btn = document.querySelector('.toggle-btn[data-mod="'+i+'"]');
-                if (btn) {
-                    btn.classList.toggle('is-completed', !!progressData[i]);
-                    btn.innerHTML = progressData[i]
-                        ? '<i class="fas fa-check-circle"></i> Concluído'
-                        : '<i class="far fa-circle"></i> Marcar Concluído';
-                    
-                    const card = btn.closest('.day-card');
-                    if(card) card.classList.toggle('is-done', !!progressData[i]);
-                }
-            }
-            
-            // Barra principal
-            const pct = Math.round((completed / TOTAL_MODULES) * 100);
-            document.getElementById('progress-text').textContent = pct + '%';
-            document.getElementById('progress-bar').style.width = pct + '%';
-            
-            updateMiniProgress();
-        }
+  function showLP() {
+    document.getElementById('loading-section').classList.add('hidden');
+    document.getElementById('lp-section').style.display = 'block';
+    window.scrollTo(0, 0);
+    initScrollReveal();
+  }
 
-        // Evento dos botões "Marcar concluído"
-        document.addEventListener('click', function(e) {
-            const btn = e.target.closest('.toggle-btn');
-            if (!btn) return;
-            const mod = btn.getAttribute('data-mod');
-            progressData[mod] = !progressData[mod];
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
-            updateUI();
-        });
+  // ── SCROLL REVEAL ──
+  function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+  }
 
-        // Acordeão de Fases
-        document.querySelectorAll('.phase-header').forEach(function(header) {
-            header.addEventListener('click', function() {
-                const phase = header.getAttribute('data-phase');
-                const body = document.getElementById('body-'+phase);
-                const isOpen = header.classList.contains('open');
-                
-                // Fecha todos primeiro
-                document.querySelectorAll('.phase-header').forEach(function(h){ h.classList.remove('open'); });
-                document.querySelectorAll('.phase-body').forEach(function(b){ b.classList.remove('open'); });
-                
-                // Abre se não estava aberto
-                if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
-            });
-        });
+  // ── FAQ ──
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
 
-        // Init
-        updateUI();
-    </script>
+  // ── STICKY BAR ──
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('stickyBar');
+    if (!bar) return;
+    if (window.scrollY > 600) bar.classList.add('visible');
+    else bar.classList.remove('visible');
+  });
+
+  // init
+  document.getElementById('progressWrap').style.display = 'none';
+</script>
 </body>
 </html>
