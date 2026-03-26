@@ -154,9 +154,9 @@ body::before{
 
 .q-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(26px,5.5vw,38px);
+  font-size:clamp(34px,7vw,52px);
   font-weight:600;
-  line-height:1.2;
+  line-height:1.15;
   margin-bottom:8px;
 }
 .q-title em{font-style:italic;color:var(--gold)}
@@ -887,7 +887,10 @@ body::before{
       this.classList.add('selected');
       answers[s] = this.dataset.val;
       const btn = document.getElementById(`next-${s}`);
-      if (btn) btn.classList.add('visible');
+      if (btn) {
+        btn.classList.add('visible');
+        setTimeout(() => { btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+      }
     });
   });
 
@@ -902,6 +905,7 @@ body::before{
       if (currentSlide < TOTAL) {
         showSlide(currentSlide);
         updateProgress(currentSlide);
+        setTimeout(() => { const ns = document.getElementById("slide-" + currentSlide); if(ns) ns.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
       } else {
         startLoading();
       }
