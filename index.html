@@ -233,16 +233,15 @@ body::after{
   animation:fadeUp .6s .16s ease both;line-height:1.7;
 }
 
-.hero-cta{margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto;animation:fadeUp .6s .24s ease both; padding:0 22px;}
-
 /* ── CARROSSEL BÔNUS (GLASSMORPHISM) ── */
-.bonus-section{
+.hero-bonuses{
+  margin:56px auto 0;
+  animation:fadeUp .6s .24s ease both;
   width:100%;
-  margin:0 auto;
 }
 .bonus-alert{
-  text-align:center;font-size:14px;color:var(--gold);font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px;
+  text-align:center;font-size:12px;color:var(--gold);font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;
 }
 .carousel-wrapper{
   position:relative;
@@ -314,6 +313,7 @@ body::after{
   display:flex;align-items:center;gap:6px;opacity:0.9;
 }
 
+.hero-cta{margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto;animation:fadeUp .6s .30s ease both; padding:0 22px;}
 
 /* ── DIVIDER ── */
 .divider{
@@ -674,6 +674,7 @@ body::after{
   </div>
 </div>
 
+
 <!-- ════════════════════════
      TELA DE SELEÇÃO
 ════════════════════════ -->
@@ -703,6 +704,80 @@ body::after{
       <h1 id="heroTitle">Seu cérebro ainda<br>acredita que <em>precisa</em><br>do cigarro.</h1>
       <p class="hero-sub">Não é falta de força de vontade. É programação mental. E dá pra desinstalar isso em 7 dias, ouvindo áudios de 15 minutos por dia.</p>
       
+      <!-- BÔNUS NO HERO COM CARROSSEL GLASSMORPHISM -->
+      <div class="hero-bonuses">
+        <p class="bonus-alert">🎁 Garantindo hoje, você também recebe as ferramentas:</p>
+        
+        <div class="carousel-wrapper">
+          <div class="carousel-track">
+            
+            <!-- CONJUNTO DE CARDS 1 -->
+            <div class="bonus-card">
+              <div class="b-icon">📅</div>
+              <h3 class="b-title">Contador de Resistência</h3>
+              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
+              <div class="b-tags">
+                <span>🪙 Conquistas</span>
+                <span>📈 Ferramenta</span>
+              </div>
+            </div>
+            
+            <div class="bonus-card">
+              <div class="b-icon">🧮</div>
+              <h3 class="b-title">Calculadora de Economia</h3>
+              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
+              <div class="b-tags">
+                <span>🏆 Economia</span>
+                <span>⏱️ Ferramenta</span>
+              </div>
+            </div>
+            
+            <div class="bonus-card">
+              <div class="b-icon">💨</div>
+              <h3 class="b-title">Respirador SOS Anticrise</h3>
+              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
+              <div class="b-tags">
+                <span>🛡️ Controle</span>
+                <span>🤍 Ferramenta</span>
+              </div>
+            </div>
+
+            <!-- CONJUNTO DE CARDS 2 (Cópia exata para Loop Infinito perfeito) -->
+            <div class="bonus-card" aria-hidden="true">
+              <div class="b-icon">📅</div>
+              <h3 class="b-title">Contador de Resistência</h3>
+              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
+              <div class="b-tags">
+                <span>🪙 Conquistas</span>
+                <span>📈 Ferramenta</span>
+              </div>
+            </div>
+            
+            <div class="bonus-card" aria-hidden="true">
+              <div class="b-icon">🧮</div>
+              <h3 class="b-title">Calculadora de Economia</h3>
+              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
+              <div class="b-tags">
+                <span>🏆 Economia</span>
+                <span>⏱️ Ferramenta</span>
+              </div>
+            </div>
+            
+            <div class="bonus-card" aria-hidden="true">
+              <div class="b-icon">💨</div>
+              <h3 class="b-title">Respirador SOS Anticrise</h3>
+              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
+              <div class="b-tags">
+                <span>🛡️ Controle</span>
+                <span>🤍 Ferramenta</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <!-- FIM BÔNUS HERO -->
+
       <div class="hero-cta">
         <a href="https://ggcheckout.app/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">Quero Meu Acesso — R$ 16,90</a>
         <span class="btn-sub">🔒 Pagamento seguro · Garantia de 7 dias · Acesso imediato</span>
@@ -822,83 +897,6 @@ body::after{
     </div>
   </div>
 
-  <!-- ── SEÇÃO BÔNUS (Reposicionada) ── -->
-  <div class="sec">
-    <div class="wrap-wide reveal">
-      <div class="bonus-section">
-        <p class="bonus-alert">🎁 Garantindo hoje, você também recebe as ferramentas:</p>
-        
-        <div class="carousel-wrapper">
-          <div class="carousel-track">
-            
-            <!-- CONJUNTO DE CARDS 1 -->
-            <div class="bonus-card">
-              <div class="b-icon">📅</div>
-              <h3 class="b-title">Contador de Resistência</h3>
-              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
-              <div class="b-tags">
-                <span>🪙 Conquistas</span>
-                <span>📈 Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card">
-              <div class="b-icon">🧮</div>
-              <h3 class="b-title">Calculadora de Economia</h3>
-              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
-              <div class="b-tags">
-                <span>🏆 Economia</span>
-                <span>⏱️ Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card">
-              <div class="b-icon">💨</div>
-              <h3 class="b-title">Respirador SOS Anticrise</h3>
-              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
-              <div class="b-tags">
-                <span>🛡️ Controle</span>
-                <span>🤍 Ferramenta</span>
-              </div>
-            </div>
-
-            <!-- CONJUNTO DE CARDS 2 (Cópia exata para Loop Infinito perfeito) -->
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">📅</div>
-              <h3 class="b-title">Contador de Resistência</h3>
-              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
-              <div class="b-tags">
-                <span>🪙 Conquistas</span>
-                <span>📈 Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">🧮</div>
-              <h3 class="b-title">Calculadora de Economia</h3>
-              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
-              <div class="b-tags">
-                <span>🏆 Economia</span>
-                <span>⏱️ Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">💨</div>
-              <h3 class="b-title">Respirador SOS Anticrise</h3>
-              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
-              <div class="b-tags">
-                <span>🛡️ Controle</span>
-                <span>🤍 Ferramenta</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ── SEÇÃO 4: DEPOIMENTOS ── -->
   <div class="sec">
     <div class="wrap-wide reveal">
@@ -989,7 +987,7 @@ body::after{
         </div>
         <div class="faq-item">
           <button class="faq-q">E se eu fumar há muitos anos? Ainda funciona? <span class="faq-arr">+</span></button>
-          <div class="faq-a">Sim — e é justamente para fumantes de longa data que o protocolo foi estruturado. Quanto mais tempo você fuma, mais enraizado está o padrão no subconsciente. Mas o estado theta ignora esse tempo: ele acessa a memória de procedimento independente de quando foi instalada. A dependência química (nicotina) já sumiu em 72 horas. O que permanece é a instrução mental — e é exatamente o que o protocolo dissolve.</div>
+          <div class="faq-a">Sim — e é justamente para fumantes de longa data que o protocolo foi estruturado. Quanto mais tempo você fuma, mais enraizado está o padrão no subconsciente. Mas o estado theta ignora esse tempo: ele acessa a memória de procedimento independente de quando foi instalada. A dependência química (nicotina) já some em 72 horas. O que permanece é a instrução mental — e é exatamente o que o protocolo dissolve.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Vou engordar ou ficar irritado? <span class="faq-arr">+</span></button>
