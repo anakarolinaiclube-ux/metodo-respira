@@ -74,7 +74,6 @@ body::after{
 @keyframes slideIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pulseGold{0%,100%{box-shadow:0 0 0 0 rgba(200,168,75,.35)}60%{box-shadow:0 0 0 10px rgba(200,168,75,0)}}
-@keyframes scrollMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
 .reveal.on{opacity:1;transform:none}
@@ -122,6 +121,18 @@ body::after{
 }
 .q-title em{font-style:italic;color:var(--gold)}
 .q-hint{font-size:13px;color:var(--muted2);margin-bottom:30px;line-height:1.65}
+
+/* Name input */
+.name-input{
+  width:100%;background:var(--surface);
+  border:1px solid var(--gold-border);border-radius:8px;
+  padding:17px 20px;color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:16px;
+  outline:none;margin-bottom:18px;
+  transition:border-color .2s;
+}
+.name-input:focus{border-color:var(--gold-border-strong)}
+.name-input::placeholder{color:var(--muted)}
 
 /* Options */
 .opts{display:flex;flex-direction:column;gap:10px}
@@ -223,62 +234,51 @@ body::after{
 
 .hero-cta{margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto;animation:fadeUp .6s .24s ease both; padding:0 22px;}
 
-/* ── CARROSSEL BÔNUS (GLASSMORPHISM) ── */
+/* ── SEÇÃO BÔNUS (GLASSMORPHISM VERTICAL) ── */
 .bonus-section{
   width:100%;
   margin:0 auto;
+  padding-top: 24px;
 }
 .bonus-alert{
   text-align:center;font-size:14px;color:var(--gold);font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px;
 }
-.carousel-wrapper{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-  padding:15px 0 30px; /* Espaço para animação de hover e sombras */
-}
-/* Efeito de Gradiente nas bordas da tela para rolagem suave */
-.carousel-wrapper::before, .carousel-wrapper::after{
-  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
-}
-.carousel-wrapper::before{left:0;background:linear-gradient(to right, var(--bg) 0%, transparent 100%);}
-.carousel-wrapper::after{right:0;background:linear-gradient(to left, var(--bg) 0%, transparent 100%);}
-
-.carousel-track{
-  display:flex;
-  width:max-content;
-  animation:scrollMarquee 25s linear infinite;
-}
-.carousel-track:hover{
-  animation-play-state:paused;
+.bonus-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 440px;
+  margin: 0 auto;
 }
 
 .bonus-card{
-  width:320px; /* Largura fixa do card */
-  margin-right:20px;
-  flex-shrink:0;
+  width: 100%;
   
-  /* GLASSMORPHISM */
-  background:rgba(255, 255, 255, 0.02);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(200, 168, 75, 0.2);
-  border-top:1px solid rgba(255, 255, 255, 0.08); /* Brilho de refração superior */
-  border-left:1px solid rgba(255, 255, 255, 0.04);
-  box-shadow:0 8px 32px 0 rgba(0, 0, 0, 0.35);
-  border-radius:16px;
+  /* GLASSMORPHISM ENHANCED */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   
-  padding:24px 22px;
-  display:flex;
-  flex-direction:column;
-  text-align:left;
-  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+  /* Bordas reflexivas e delicadas para o vidro */
+  border: 1px solid rgba(200, 168, 75, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Sombras fortes externas + brilho interno */
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(200, 168, 75, 0.05);
+  border-radius: 16px;
+  
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
 .bonus-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(200, 168, 75, 0.6);
-  background:rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  border-color: rgba(200, 168, 75, 0.6);
+  box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.5), inset 0 0 16px rgba(200, 168, 75, 0.1);
 }
 
 .b-icon{
@@ -572,7 +572,7 @@ body::after{
   <div class="brand-mark">Método Respira</div>
   <div class="quiz-body">
 
-    <div class="prog-wrap" id="progWrap">
+    <div class="prog-wrap" id="progWrap" style="display:none">
       <div class="prog-meta">
         <span id="progLabel">Etapa 1 de 4</span>
         <span id="progPct">0%</span>
@@ -580,8 +580,16 @@ body::after{
       <div class="prog-bg"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
     </div>
 
+    <!-- NOME -->
+    <div class="qslide on" id="sl-name">
+      <h2 class="q-title serif"><em>Qual é o seu nome?</em></h2>
+      <p class="q-hint">Digite seu primeiro nome para personalizarmos seu protocolo.</p>
+      <input type="text" class="name-input" id="userName" placeholder="Ex: João" autocomplete="given-name">
+      <button class="btn-cta" onclick="handleName()">Iniciar →</button>
+    </div>
+
     <!-- Q1 -->
-    <div class="qslide on" id="sl-0">
+    <div class="qslide" id="sl-0">
       <div class="q-tag">Seu histórico</div>
       <h2 class="q-title serif">Há quanto tempo você<br><em>fuma?</em></h2>
       <p class="q-hint">Isso define qual camada do protocolo precisa de mais atenção.</p>
@@ -684,83 +692,50 @@ body::after{
       <p class="hero-sub">Não é falta de força de vontade. É programação mental. E dá pra desinstalar isso em 7 dias, ouvindo áudios de 15 minutos por dia.</p>
       
       <div class="hero-cta">
-        <a href="https://ggcheckout.app/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">Quero Meu Acesso — R$ 16,90</a>
+        <a href="https://ggcheckout.app/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">Quero meu acesso + Bônus — R$ 16,90</a>
         <span class="btn-sub">🔒 Pagamento seguro · Garantia de 7 dias · Acesso imediato</span>
       </div>
     </div>
   </div>
 
-  <!-- ── SEÇÃO BÔNUS (Reposicionada abaixo do CTA da Hero) ── -->
-  <div class="sec" style="padding-top: 0;">
-    <div class="wrap-wide reveal">
+  <!-- ── SEÇÃO BÔNUS (GLASSMORPHISM VERTICAL, ABAIXO DA CTA) ── -->
+  <div class="sec" style="padding-top: 0; padding-bottom: 72px;">
+    <div class="wrap reveal">
       <div class="bonus-section">
         <p class="bonus-alert">🎁 Garantindo hoje, você também recebe as ferramentas:</p>
         
-        <div class="carousel-wrapper">
-          <div class="carousel-track">
-            
-            <!-- CONJUNTO DE CARDS 1 -->
-            <div class="bonus-card">
-              <div class="b-icon">📅</div>
-              <h3 class="b-title">Contador de Resistência</h3>
-              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
-              <div class="b-tags">
-                <span>🪙 Conquistas</span>
-                <span>📈 Ferramenta</span>
-              </div>
+        <div class="bonus-stack">
+          <!-- CARD 1 -->
+          <div class="bonus-card">
+            <div class="b-icon">📅</div>
+            <h3 class="b-title">Contador de Resistência</h3>
+            <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
+            <div class="b-tags">
+              <span>🪙 Conquistas</span>
+              <span>📈 Ferramenta</span>
             </div>
-            
-            <div class="bonus-card">
-              <div class="b-icon">🧮</div>
-              <h3 class="b-title">Calculadora de Economia</h3>
-              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
-              <div class="b-tags">
-                <span>🏆 Economia</span>
-                <span>⏱️ Ferramenta</span>
-              </div>
+          </div>
+          
+          <!-- CARD 2 -->
+          <div class="bonus-card">
+            <div class="b-icon">🧮</div>
+            <h3 class="b-title">Calculadora de Economia</h3>
+            <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
+            <div class="b-tags">
+              <span>🏆 Economia</span>
+              <span>⏱️ Ferramenta</span>
             </div>
-            
-            <div class="bonus-card">
-              <div class="b-icon">💨</div>
-              <h3 class="b-title">Respirador SOS Anticrise</h3>
-              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
-              <div class="b-tags">
-                <span>🛡️ Controle</span>
-                <span>🤍 Ferramenta</span>
-              </div>
+          </div>
+          
+          <!-- CARD 3 -->
+          <div class="bonus-card">
+            <div class="b-icon">💨</div>
+            <h3 class="b-title">Respirador SOS Anticrise</h3>
+            <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
+            <div class="b-tags">
+              <span>🛡️ Controle</span>
+              <span>🤍 Ferramenta</span>
             </div>
-
-            <!-- CONJUNTO DE CARDS 2 (Cópia exata para Loop Infinito perfeito) -->
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">📅</div>
-              <h3 class="b-title">Contador de Resistência</h3>
-              <p class="b-desc">Acompanhe seus dias, horas e minutos de liberdade. Um marco visual do seu progresso contínuo para manter seu orgulho em alta.</p>
-              <div class="b-tags">
-                <span>🪙 Conquistas</span>
-                <span>📈 Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">🧮</div>
-              <h3 class="b-title">Calculadora de Economia</h3>
-              <p class="b-desc">Descubra exatamente quanto dinheiro você está salvando por semana, mês e ano ao eliminar o cigarro da sua vida. O resultado é motivador.</p>
-              <div class="b-tags">
-                <span>🏆 Economia</span>
-                <span>⏱️ Ferramenta</span>
-              </div>
-            </div>
-            
-            <div class="bonus-card" aria-hidden="true">
-              <div class="b-icon">💨</div>
-              <h3 class="b-title">Respirador SOS Anticrise</h3>
-              <p class="b-desc">Uma ferramenta interativa visual de respiração guiada para acalmar rapidamente o sistema nervoso e dissolver qualquer fissura pontual.</p>
-              <div class="b-tags">
-                <span>🛡️ Controle</span>
-                <span>🤍 Ferramenta</span>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -798,7 +773,7 @@ body::after{
   <!-- ── SEÇÃO 2: MECANISMO ÚNICO ── -->
   <div class="sec">
     <div class="wrap reveal">
-      <p class="sec-label">O mecanismo</p>
+      <p class="sec-label">O mechanism</p>
       <h2 class="sec-title">Por que frequências<br><em>theta</em> funcionam onde<br>tudo falhou</h2>
 
       <div class="mec-intro">
@@ -1016,7 +991,8 @@ body::after{
 
 <script>
 // ─── STATE ───
-let cur = 0;
+let uName = '';
+let cur = -1;
 const TOTAL = 4;
 const ans = {};
 
@@ -1027,6 +1003,19 @@ function updProg(idx) {
   document.getElementById('progPct').textContent = pct + '%';
   document.getElementById('progLabel').textContent =
     idx < TOTAL ? `Etapa ${idx + 1} de ${TOTAL}` : 'Análise completa';
+}
+
+// ─── NAME ───
+function handleName() {
+  const inp = document.getElementById('userName');
+  const v = inp.value.trim();
+  if (!v) { inp.focus(); inp.style.borderColor = 'var(--danger)'; return; }
+  uName = v.charAt(0).toUpperCase() + v.slice(1);
+  document.getElementById('ls3txt').textContent = 'Calibrando protocolo para ' + uName + '…';
+  document.getElementById('sl-name').classList.remove('on');
+  document.getElementById('progWrap').style.display = '';
+  goSlide(0);
+  updProg(0);
 }
 
 // ─── OPTIONS ───
@@ -1077,7 +1066,9 @@ function startLoad() {
   document.getElementById('quiz-wrap').classList.add('hidden');
   document.getElementById('loading-wrap').classList.remove('hidden');
   updProg(TOTAL);
-  window.scrollTo(0, 0);['ls1','ls2','ls3','ls4'].forEach((id, i) => {
+  window.scrollTo(0, 0);
+
+  ['ls1','ls2','ls3','ls4'].forEach((id, i) => {
     setTimeout(() => {
       document.getElementById(id).classList.add('done');
       if (i === 3) setTimeout(showSelected, 850);
@@ -1113,6 +1104,13 @@ function showSelected() {
 // ─── SHOW LP ───
 function showLP() {
   document.getElementById('selected-screen').classList.remove('on');
+  
+  // Injeta o nome na Hero
+  const heroTitle = document.getElementById('heroTitle');
+  if (heroTitle && uName) {
+    heroTitle.innerHTML = uName + ', seu cérebro<br>ainda acredita que <em>precisa</em><br>do cigarro.';
+  }
+
   document.getElementById('lp-wrap').style.display = 'block';
   window.scrollTo(0, 0);
   initReveal();
@@ -1144,8 +1142,8 @@ window.addEventListener('scroll', () => {
   s.classList.toggle('on', window.scrollY > 500);
 });
 
-// init
-updProg(0);
+// Inicializa escondendo a barra de progresso até o nome ser inserido
+document.getElementById('progWrap').style.display = 'none';
 </script>
 </body>
 </html>
