@@ -123,18 +123,6 @@ body::after{
 .q-title em{font-style:italic;color:var(--gold)}
 .q-hint{font-size:13px;color:var(--muted2);margin-bottom:30px;line-height:1.65}
 
-/* Name input */
-.name-input{
-  width:100%;background:var(--surface);
-  border:1px solid var(--gold-border);border-radius:8px;
-  padding:17px 20px;color:var(--text);
-  font-family:'DM Sans',sans-serif;font-size:16px;
-  outline:none;margin-bottom:18px;
-  transition:border-color .2s;
-}
-.name-input:focus{border-color:var(--gold-border-strong)}
-.name-input::placeholder{color:var(--muted)}
-
 /* Options */
 .opts{display:flex;flex-direction:column;gap:10px}
 .opt{
@@ -233,15 +221,16 @@ body::after{
   animation:fadeUp .6s .16s ease both;line-height:1.7;
 }
 
+.hero-cta{margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto;animation:fadeUp .6s .24s ease both; padding:0 22px;}
+
 /* ── CARROSSEL BÔNUS (GLASSMORPHISM) ── */
-.hero-bonuses{
-  margin:56px auto 0;
-  animation:fadeUp .6s .24s ease both;
+.bonus-section{
   width:100%;
+  margin:0 auto;
 }
 .bonus-alert{
-  text-align:center;font-size:12px;color:var(--gold);font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;
+  text-align:center;font-size:14px;color:var(--gold);font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px;
 }
 .carousel-wrapper{
   position:relative;
@@ -313,7 +302,6 @@ body::after{
   display:flex;align-items:center;gap:6px;opacity:0.9;
 }
 
-.hero-cta{margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto;animation:fadeUp .6s .30s ease both; padding:0 22px;}
 
 /* ── DIVIDER ── */
 .divider{
@@ -584,7 +572,7 @@ body::after{
   <div class="brand-mark">Método Respira</div>
   <div class="quiz-body">
 
-    <div class="prog-wrap" id="progWrap" style="display:none">
+    <div class="prog-wrap" id="progWrap">
       <div class="prog-meta">
         <span id="progLabel">Etapa 1 de 4</span>
         <span id="progPct">0%</span>
@@ -592,16 +580,8 @@ body::after{
       <div class="prog-bg"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
     </div>
 
-    <!-- NOME -->
-    <div class="qslide on" id="sl-name">
-      <h2 class="q-title serif"><em>Qual é o seu nome?</em></h2>
-      <p class="q-hint">Digite seu primeiro nome para personalizarmos seu protocolo.</p>
-      <input type="text" class="name-input" id="userName" placeholder="Ex: João" autocomplete="given-name">
-      <button class="btn-cta" onclick="handleName()">Iniciar →</button>
-    </div>
-
     <!-- Q1 -->
-    <div class="qslide" id="sl-0">
+    <div class="qslide on" id="sl-0">
       <div class="q-tag">Seu histórico</div>
       <h2 class="q-title serif">Há quanto tempo você<br><em>fuma?</em></h2>
       <p class="q-hint">Isso define qual camada do protocolo precisa de mais atenção.</p>
@@ -674,7 +654,6 @@ body::after{
   </div>
 </div>
 
-
 <!-- ════════════════════════
      TELA DE SELEÇÃO
 ════════════════════════ -->
@@ -704,8 +683,17 @@ body::after{
       <h1 id="heroTitle">Seu cérebro ainda<br>acredita que <em>precisa</em><br>do cigarro.</h1>
       <p class="hero-sub">Não é falta de força de vontade. É programação mental. E dá pra desinstalar isso em 7 dias, ouvindo áudios de 15 minutos por dia.</p>
       
-      <!-- BÔNUS NO HERO COM CARROSSEL GLASSMORPHISM -->
-      <div class="hero-bonuses">
+      <div class="hero-cta">
+        <a href="https://ggcheckout.app/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">Quero Meu Acesso — R$ 16,90</a>
+        <span class="btn-sub">🔒 Pagamento seguro · Garantia de 7 dias · Acesso imediato</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SEÇÃO BÔNUS (Reposicionada abaixo do CTA da Hero) ── -->
+  <div class="sec" style="padding-top: 0;">
+    <div class="wrap-wide reveal">
+      <div class="bonus-section">
         <p class="bonus-alert">🎁 Garantindo hoje, você também recebe as ferramentas:</p>
         
         <div class="carousel-wrapper">
@@ -775,12 +763,6 @@ body::after{
 
           </div>
         </div>
-
-      </div> <!-- FIM BÔNUS HERO -->
-
-      <div class="hero-cta">
-        <a href="https://ggcheckout.app/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">Quero Meu Acesso — R$ 16,90</a>
-        <span class="btn-sub">🔒 Pagamento seguro · Garantia de 7 dias · Acesso imediato</span>
       </div>
     </div>
   </div>
@@ -987,7 +969,7 @@ body::after{
         </div>
         <div class="faq-item">
           <button class="faq-q">E se eu fumar há muitos anos? Ainda funciona? <span class="faq-arr">+</span></button>
-          <div class="faq-a">Sim — e é justamente para fumantes de longa data que o protocolo foi estruturado. Quanto mais tempo você fuma, mais enraizado está o padrão no subconsciente. Mas o estado theta ignora esse tempo: ele acessa a memória de procedimento independente de quando foi instalada. A dependência química (nicotina) já some em 72 horas. O que permanece é a instrução mental — e é exatamente o que o protocolo dissolve.</div>
+          <div class="faq-a">Sim — e é justamente para fumantes de longa data que o protocolo foi estruturado. Quanto mais tempo você fuma, mais enraizado está o padrão no subconsciente. Mas o estado theta ignora esse tempo: ele acessa a memória de procedimento independente de quando foi instalada. A dependência química (nicotina) já sumiu em 72 horas. O que permanece é a instrução mental — e é exatamente o que o protocolo dissolve.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Vou engordar ou ficar irritado? <span class="faq-arr">+</span></button>
@@ -1034,8 +1016,7 @@ body::after{
 
 <script>
 // ─── STATE ───
-let uName = '';
-let cur = -1;
+let cur = 0;
 const TOTAL = 4;
 const ans = {};
 
@@ -1046,19 +1027,6 @@ function updProg(idx) {
   document.getElementById('progPct').textContent = pct + '%';
   document.getElementById('progLabel').textContent =
     idx < TOTAL ? `Etapa ${idx + 1} de ${TOTAL}` : 'Análise completa';
-}
-
-// ─── NAME ───
-function handleName() {
-  const inp = document.getElementById('userName');
-  const v = inp.value.trim();
-  if (!v) { inp.focus(); inp.style.borderColor = 'var(--danger)'; return; }
-  uName = v.charAt(0).toUpperCase() + v.slice(1);
-  document.getElementById('ls3txt').textContent = 'Calibrando protocolo para ' + uName + '…';
-  document.getElementById('sl-name').classList.remove('on');
-  document.getElementById('progWrap').style.display = '';
-  goSlide(0);
-  updProg(0);
 }
 
 // ─── OPTIONS ───
@@ -1109,9 +1077,7 @@ function startLoad() {
   document.getElementById('quiz-wrap').classList.add('hidden');
   document.getElementById('loading-wrap').classList.remove('hidden');
   updProg(TOTAL);
-  window.scrollTo(0, 0);
-
-  ['ls1','ls2','ls3','ls4'].forEach((id, i) => {
+  window.scrollTo(0, 0);['ls1','ls2','ls3','ls4'].forEach((id, i) => {
     setTimeout(() => {
       document.getElementById(id).classList.add('done');
       if (i === 3) setTimeout(showSelected, 850);
@@ -1147,11 +1113,6 @@ function showSelected() {
 // ─── SHOW LP ───
 function showLP() {
   document.getElementById('selected-screen').classList.remove('on');
-  // Personalizar hero com o nome
-  const heroTitle = document.getElementById('heroTitle');
-  if (heroTitle && uName) {
-    heroTitle.innerHTML = uName + ', seu cérebro<br>ainda acredita que <em>precisa</em><br>do cigarro.';
-  }
   document.getElementById('lp-wrap').style.display = 'block';
   window.scrollTo(0, 0);
   initReveal();
@@ -1184,7 +1145,7 @@ window.addEventListener('scroll', () => {
 });
 
 // init
-document.getElementById('progWrap').style.display = 'none';
+updProg(0);
 </script>
 </body>
 </html>
