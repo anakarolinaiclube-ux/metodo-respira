@@ -559,7 +559,7 @@ body::after{
   border-radius:99px;overflow:hidden;margin:0 auto;
   animation:fadeUp .5s .4s ease both;
 }
-.sel-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:99px;width:0%;transition:width 5s linear}
+.sel-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:99px;width:0%;transition:width 3.5s linear}
 
 </style>
 </head>
@@ -1097,8 +1097,8 @@ function showSelected() {
     document.getElementById('selBarFill').style.width = '100%';
   }, 100);
 
-  // Após 3.2s vai pra LP
-  setTimeout(showLP, 5500);
+  // Após 3.8s vai pra LP (Reduzido em 1.7 segundos)
+  setTimeout(showLP, 3800);
 }
 
 // ─── SHOW LP ───
